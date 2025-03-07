@@ -1,0 +1,677 @@
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* header */
+.logo-box img {
+  width: 250px;
+  max-width: 250px;
+  height: auto;
+}
+
+.language-dropdown .dropdown-menu {
+  margin-top: 1rem;
+}
+
+.bg-secondary{
+  background:linear-gradient(to bottom, #00040f 30%, rgba(0, 4, 15, 0)) !important;
+  /* background-color: #00040f !important; */
+  
+}
+
+.language-dropdown .dropdown-menu .dropdown-item {
+  color: #2864A3;
+}
+
+.banner-wrap {
+  z-index: 1;
+}
+
+.banner-wrap .banner-1 {
+  position: relative;
+}
+
+.banner-title{
+  position: absolute;
+  right: 30%;
+  top: 40%;
+  display: flex;
+  color: #fff;
+}
+.banner-title h1{
+  font-size: 72px;
+}
+.cyan-txt{
+  color:#66e8d9 ;
+}
+.second-title{
+  top: 53%;
+  right: 23%;
+}
+.banner-wrap .banner-txt {
+  position: absolute;
+  right: 12%;
+  top: 70%;
+  width: 40%;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+.banner-wrap .banner-1 .floating-img {
+  position: absolute;
+  top: 20%;
+  left: 18%;
+  max-width: 100%;
+  animation: floating 4s ease-in-out infinite;
+}
+
+.banner-wrap .banner-txt h1 {
+  border-bottom: 3px solid #0d0a4b;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.banner-wrap .jump-in-img {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+
+.banner-wrap .animate__animated {
+  --animate-duration: 2s;
+}
+
+/* 熱門遊戲區 */
+.hotGame-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hotGame-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hotGame-title .fa-fire {
+  max-width: 30px;
+  height: 100%;
+  margin-right: 10px;
+  color: #f93928;
+}
+
+.game-search {
+  width: 50%;
+  position: relative;
+  margin: 2rem auto;
+}
+
+.game-search .search-blanck {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #2864a3;
+  border-radius: 10px;
+  padding: 5px 40px;
+}
+
+.game-search .search-blanck:focus {
+  outline: none;
+  box-shadow: inset 0 0 8px rgba(40, 100, 163, 0.3);
+}
+
+.game-search svg {
+  position: absolute;
+  left: 10px;
+  top: 25%;
+}
+
+.seeMore-btn {
+  margin-bottom: 20px;
+}
+
+.seeMore-btn a {
+  text-decoration: none;
+  color: #2864A3;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.seeMore-btn a:hover {
+  color: #397fc9;
+}
+
+.game-list-wrap {
+  display: flex;
+  justify-content: start;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.game-list-wrap a {
+  display: block;
+  width: 100%;
+}
+
+.game-container {
+  max-width: 250px;
+  border-radius: 10px;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  width: calc(33.333% - 30px);
+}
+
+.game-container .game-name {
+  background: #2864A3;
+  font-size: 1rem;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.game-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.3s ease;
+  z-index: 1;
+}
+
+/* hover 時顯示黑霧 */
+.game-container:hover::before {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.game-icon-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 3;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.game-container:hover .game-icon-svg {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 維護中 */
+.maintenance-txt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  z-index: 10;
+  text-align: center;
+}
+
+/* 關於我們 */
+.aboutUs-container {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  padding: 50px 50px 0;
+}
+
+.aboutUs-container .container-wrap {
+  max-width: 60%;
+}
+
+.aboutUs-container .aboutUs-box {
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutUs-container .aboutUs-box h1 {
+  border-bottom: 2px solid #66e8d9;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  width: 60%;
+}
+
+.aboutUs-container .aboutUs-box p {
+  font-size: 1.2rem;
+}
+
+.aboutUs-container .aboutUs-box:first-child {
+  border: 2px solid #616161;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px); 
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.aboutUs-container .aboutUs-box:first-child h1 {
+  color: #66e8d9;
+}
+
+.aboutUs-container .aboutUs-txt {
+  margin-bottom: 150px;
+}
+
+.aboutUs-container .main-img {
+  position: absolute;
+  bottom: 0;
+  right: 5%;
+  width: 32%;
+}
+
+.aboutUs-container .aboutUs-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.aboutUs-container .aboutUs-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.vid-item{
+  position: absolute;
+  bottom: 0%;
+  right: 5%;
+  width: 35%;
+}
+
+/* FOOTER */
+.footer , .copyright{
+  background-color: #000;
+  padding: 24px 0;
+}
+.footer .d-flex{
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #66e8d9;
+}
+.footer svg{
+  max-width: 40px;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* 我們的服務 */
+.serviceTeam-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #000;
+  padding: 20px;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.page-section{
+  padding:12rem 0;
+}
+.serviceTeam-wrap h1 {
+  margin-bottom: 50px;
+}
+
+.serviceTeam-wrap .serviceItem-wrap {
+  display: flex;
+  gap: 20px;
+  flex: 1 1 calc(50% - 20px);
+}
+
+.serviceTeam-wrap .service-box {
+  text-align: center;
+  border: 2px solid #242b3f;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 1rem 0 0;
+  position: relative;
+}
+.serviceTeam-wrap .service-box:hover {
+  border: 2px solid #66e8d9;
+}
+
+.serviceTeam-wrap .service-box img {
+  width: 100%;
+  border-radius: 0 0 8px 8px;
+}
+
+.serviceTeam-wrap .service-box p {
+  color: #535353;
+}
+
+.serviceTeam-wrap .service-box h3 {
+  color: #c4c4c4;
+}
+
+.serviceTeam-wrap .service-box:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.serviceTeam-wrap .service-box:hover h3 {
+  color: #66e8d9;
+}
+
+.serviceTeam-wrap .img-container {
+  position: relative;
+}
+
+.serviceTeam-wrap .img-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: filter 0.3s ease-in-out;
+}
+
+.serviceTeam-wrap .img-container p {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.serviceTeam-wrap .img-container:hover img {
+  filter: blur(5px) brightness(0.2);
+}
+
+.serviceTeam-wrap .img-container:hover p {
+  display: block;
+}
+
+/* 我們團隊區塊 */
+.ourTeam-container {
+  display: flex;
+  padding: 50px 50px 0;
+  justify-content: center;
+}
+
+.ourTeam-container .ourTeamInfo-wrap {
+  width: 70%;
+}
+
+.ourTeam-container .ourTeamInfo-wrap h1 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.advantage-wrap{
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  
+}
+.advantage-box{
+  flex: 1 1 calc(50% - 10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem;
+  border: 2px solid #242b3f;
+  background: #0e1320;
+}
+.advantage-box svg{
+  max-width: 50px;
+  border: 2px solid #66e8d9;
+  border-radius: 50%;
+}
+.advantage-box:hover{
+  background: linear-gradient(to top,#66e8d9 3%,#0e1320 50%);
+  border:2px solid #66e8d9;
+}
+.advantage-box:hover svg{
+  animation: breathing 2s infinite ease-in-out;
+}
+@keyframes breathing {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); } /* 放大到 1.1 倍 */
+  100% { transform: scale(1); }
+}
+
+
+@media screen and (max-width: 1200px) {
+  .banner-wrap {
+    margin-top: 100px;
+  }
+  .banner-wrap .banner-txt {
+    font-size: 1rem;
+  }
+  .banner-wrap .banner-txt h1 {
+    font-size: 1.5rem;
+  }
+  .aboutUs-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .aboutUs-container .container-wrap {
+    max-width: 100%;
+  }
+  .aboutUs-container .aboutUs-box {
+    width: 100%;
+  }
+  .aboutUs-container .aboutUs-box h1 {
+    width: 100%;
+  }
+ 
+  .aboutUs-container .main-img {
+    position: relative;
+    width: 80%;
+  }
+  .serviceItem-wrap {
+    flex-wrap: wrap;
+    flex: 1 1 calc(50% - 20px);
+    justify-content: center;
+  }
+  .serviceItem-wrap .service-box {
+    width: calc(50% - 20px);
+  }
+  .serviceItem-wrap .service-box h3 {
+    font-size: 1.2rem;
+  }
+  .game-list-wrap {
+    flex: 1 1 calc(33.333% - 1rem);
+    margin: 0.5rem;
+    box-sizing: border-box;
+  }
+  .game-container {
+    flex: 0 0 calc(33.333% - 30px);
+    min-width: calc(33.333% - 10px);
+  }
+  .game-name {
+    white-space: nowrap;
+  }
+  .secureMain-img {
+    width: 60%;
+    height: 60%;
+  }
+  
+}
+
+@media screen and (max-width: 768px) {
+  .logo-box img {
+    width: 60%;
+  }
+  .banner-wrap {
+    margin-top: 75px;
+  }
+  .banner-wrap .banner-txt {
+    top: 30%;
+  }
+  .banner-wrap img {
+    overflow: hidden;
+  }
+  .game-container .game-name {
+    padding: 20px 5px;
+    font-size: 0.75rem;
+  }
+  .maintenance-txt {
+    font-size: 1.2rem;
+  }
+  .carousel-item .banner-txt {
+    top: 20%;
+    left: 40%;
+    font-size: 0.8rem;
+    width: 50%;
+  }
+  .ourTeam-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .ourTeam-container .ourTeamInfo-wrap {
+    width: 100%;
+    margin-top: 20px;
+    align-items: center;
+  }
+  .serviceTeam-wrap {
+    max-width: 100%;
+    padding: 20px;
+  }
+  .serviceTeam-wrap .serviceItem-wrap {
+    gap: 20px;
+  }
+  .serviceTeam-wrap .serviceItem-wrap .service-box h3 {
+    font-size: 1.2rem;
+  }
+  .aboutUs-container .aboutUs-box p {
+    font-size: 1rem;
+  }
+  
+}
+
+@media screen and (max-width: 576px) {
+  
+  .seeMore-btn a {
+    font-size: 1rem;
+  }
+  .carousel-inner {
+    overflow: hidden;
+    position: relative;
+  }
+  .banner-wrap img {
+    height: 450px;
+    object-fit: cover;
+    object-position: left;
+  }
+  .game-list-wrap {
+    margin: 0;
+    justify-content: start;
+    gap: 10px;
+  }
+  .game-container .game-name {
+    height: 60px;
+    padding: 10px;
+  }
+  .game-container .game-name span {
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: inline-block;
+  }
+  .serviceTeam-wrap {
+    max-width: 100%;
+    padding: 10px;
+  }
+  .serviceTeam-wrap .serviceItem-wrap {
+    gap: 10px;
+  }
+  .serviceTeam-wrap .serviceItem-wrap .service-box {
+    width: 48%;
+  }
+  .serviceTeam-wrap .serviceItem-wrap .service-box p {
+    font-size: 0.7rem;
+  }
+  .serviceTeam-wrap .serviceItem-wrap .service-box h3 {
+    font-size: 1rem;
+  }
+  .serviceTeam-wrap .serviceItem-wrap .service-box:hover h3 {
+    display: none;
+  }
+  .carousel-item .banner-txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 2;
+    width: 70%;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .carousel-item .banner-txt h1 {
+    border-bottom: 3px solid #fff;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  .carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+  .ourTeam-container img {
+    width: 80%;
+  }
+  .ourTeam-container .ourTeamInfo-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .ourTeam-container .promiseSection-wrap {
+    flex-direction: column;
+  }
+ 
+ 
+  .logo-box img {
+    max-width: 230px !important;
+    width: 138px !important;
+  }
+  
+}

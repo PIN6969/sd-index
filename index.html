@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>SD-順大資訊</title>
+
+        <link href="./assets/css/styles-reset.css" rel="stylesheet" />
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.css">
+
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="//use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="./assets/css/styles.css" rel="stylesheet" />
+        <link
+        rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/an imate.min.css"
+      />
+      <link href="./assets/css/styles-main.css" rel="stylesheet" />
+      <!-- <script src="//unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+      <script>var vConsole = new window.VConsole();</script> -->
+      <script src="//code.jquery.com/jquery-3.7.1.js"></script>
+	  <script src="//unpkg.com/vue@3/dist/vue.global.js"></script>
+	  <script>
+			//多国语言包载入(vue.js)
+			$(function(){
+				let lang = "cht"; //預設語言
+				let langList = ["cht", "chs", "eng"]; //允許的語言包
+				let langFile = "main.json"; //預設語言檔
+				let getUrlParameter = function getUrlParameter(sParam) {
+					let sPageURL = window.location.search.substring(1),
+						sURLVariables = sPageURL.split('&'),
+						sParameterName,
+						i;
+					for (i = 0; i < sURLVariables.length; i++) {
+						sParameterName = sURLVariables[i].split('=');
+						if (sParameterName[0] === sParam) {
+							return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+						}
+					}
+					return false;
+				};
+				//如果瀏覽器網址有指定語言則先取網址的
+				let tmpLang = getUrlParameter('lang');
+				if (tmpLang && ["cht", "chs", "eng"].includes(tmpLang)) {
+					lang = tmpLang;
+				} else {
+					//如果瀏覽器緩存則取緩存的
+					tmpLang = localStorage.getItem('lang');
+					if(tmpLang != null && tmpLang != "") {
+						lang = tmpLang;
+					}
+				}
+				localStorage.setItem('lang', lang);
+				window.LANG = {};
+				$.getJSON("./assets/lang/"+lang+"/"+langFile, function(json) {
+					window.LANG = json; 
+					if(typeof Vue == 'object' && typeof window.LANG != 'undefined') {
+						Vue.createApp({
+							data: () => ({
+								LANG: window.LANG
+							})
+						}).mount('body');
+					}
+				});
+			})
+		</script>
+       <script>
+        const video = document.getElementById('videoElement');
+        
+        let isReversing = false; // 控制是否處於倒播狀態
+      
+        // 正常播放結束後
+        video.addEventListener('ended', function() {
+          if (!isReversing) {
+            // 設定為倒播狀態
+            isReversing = true;
+            video.pause();
+            video.currentTime = video.duration; // 將播放時間設為影片結尾
+            reversePlayback();
+          }
+        });
+      
+        // 反向播放的功能
+        function reversePlayback() {
+          const interval = setInterval(function() {
+            if (video.currentTime <= 0) {
+              // 如果倒播到影片開頭，重新設置為正常播放並循環
+              clearInterval(interval);
+              video.playbackRate = 1; // 恢復為正常速度
+              video.play();
+              isReversing = false; // 停止倒播狀態
+            } else {
+              video.currentTime -= 0.05; // 每次倒退一點點
+            }
+          }, 20); // 每20毫秒更新一次時間
+        }
+      </script>
+    </head>
+    <body id="page-top" style="background-color: #00040f;">
+        <!-- HEADER-->
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand logo-box" href="#page-top">
+                    <img src="./assets/img/img_header_logo.png" alt="" >
+                    </a>
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#service">{{LANG.service}}</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#aboutUs">{{LANG.about_us}}</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#advantage">{{LANG.advantage}}</a></li>
+                    </ul>
+                    <div class="dropdown language-dropdown">
+                        <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="//www.w3.org/2000/svg" width="25" height="25" fill="#fff" class="bi bi-globe" viewBox="0 0 16 16">
+                                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
+                              </svg>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"  >
+                          <li><a class="dropdown-item" href="?lang=chs">简中</a></li>
+                          <li><a class="dropdown-item" href="?lang=cht">繁中</a></li>
+                          <li><a class="dropdown-item" href="?lang=eng">ENGLISH</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- BANNER-->
+        <div id="carouselExampleInterval" class="carousel slide banner-wrap" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active banner-1" data-bs-interval="10000">
+                 <img src="./assets/img/img_banner_bg.png" class="d-block w-100 main-banner" alt="...">
+                 <img class="floating-img" src="./assets/img/img_banner_earth.png" alt="">
+                 <div class="banner-title">
+                   <h1 class="cyan-txt">科技</h1>
+                   <h1>驅動創新</h1>
+                 </div>
+                 <div class="banner-title second-title">
+                    <h1 class="cyan-txt">資訊</h1>
+                    <h1>連接未來</h1>
+                  </div>
+                  <div class="banner-txt">科技不只是工具，而是推動創新的核心動力。透過資訊的整合與應用，我們不斷拓展可能性，<br>從數據到智能決策，從系統開發到用戶體驗，每一步創新都源於對科技的深刻理解，讓未來更可期。</div>
+              </div>
+              
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+         <!-- 我們的服務 -->
+         <section class="page-section bg-primary text-white mb-0" id="service">
+            <div class="serviceTeam-wrap ">
+                <h1 class="page-section-heading text-center text-uppercase text-white">{{LANG.our_service}}</h1>
+                <div class="serviceItem-wrap ">
+                    <div class="service-box">
+                        <div class="img-container">
+                          <h3>遊戲設計</h3>
+                          <img src="./assets/img/img_service_gamedesign.png" alt="">
+                          <p>{{LANG.html5_engine_fair_design}}</p>
+                        </div>
+                    </div>
+                    <div class="service-box">
+                        <div class="img-container">
+                          <h3>網頁設計</h3>
+                          <img src="./assets/img/img_service_webdesign.png" alt="">
+                          <p>我們提供專業網頁設計，兼顧美感與效能，確保網站在各種裝置上響應式流暢運行。透過SEO優化提升曝光，並優化載入速度，提升用戶體驗。同時，簡易後台管理讓內容更新更方便，助您在數位時代脫穎而出。</p>
+                        </div>
+                    </div>
+                    <div class="service-box">
+                        <div class="img-container">
+                          <h3>前後系統</h3>
+                          <img src="./assets/img/img_service_back-end.png" alt="">
+                          <p>提供完善的系統解決方案，整合前端與後端技術，確保流暢的操作體驗與高效的數據管理。無論是用戶界面的優化，還是後端架構的穩定性，我們都專注於提升系統效能，讓管理更便捷、運行更順暢，為企業打造可靠的數位基礎。</p>
+                        </div>  
+                    </div>
+                    <div class="service-box">
+                        <div class="img-container">
+                          <h3>設備買賣</h3>
+                          <img src="./assets/img/img_service_frontend-backend.png" alt="">
+                          <p>我們提供各類設備買賣服務，致力於為客戶提供高品質、可靠的產品。無論是個人使用還是企業需求，我們的專業團隊將協助您找到最適合的設備，並提供完整的售後服務，確保每一項設備都能長期穩定運行，滿足您的各種需求。</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        
+        <!-- 關於我們 -->
+        <section id="aboutUs">
+            <div class=" aboutUs-container w-100">
+               <div class="container-wrap">
+                 <div class="aboutUs-box ">
+                      <h1>關於順大</h1>
+                      <p >當今的世界充滿挑戰，而我們的專注不僅在於技術本身，更在於如何將各種要素巧妙融合。相較於一味的順從，我們更崇尚在過程中選擇對的方向，並堅持以最合適的方式應對每一個挑戰，這正是我們的核心價值——在細節中尋找美好，並從中汲取力量。
+                      </p>
+                 </div>
+                 <div class="aboutUs-box">
+                     <h1>{{LANG.vision_future_goal}}</h1>
+                     <p >當問題像洪水般湧向你時，你不需要的是冷冰冰的報價，而是能夠與你一同面對困難，並且幫助你走出困境的夥伴。這就是我們的使命：為您提供的不僅是解決方案，更是一個有智慧的思考過程，讓每一個挑戰都成為成長的契機。每一次的合作，我們都會把您放在首位，並全力以赴，直到問題被徹底征服。<br>我們的團隊從不僅僅停留在表面的技術需求，我們深知細節決定結果，效率決定未來。通過密切的合作和深入的理解，我們為您提供的不僅是技術上的支持，更是能夠推動您業務發展的核心動力。與我們合作，不僅能夠解決眼前的問題，更將幫助您在未來的競爭中拉開與他人的差距。
+                     </p>
+                  </div>
+               </div>
+               <video id="videoElement" autoplay loop muted playsinline class="vid-item">
+                <source src="./assets/img/vid_about_spacerobot.webm" type="video/webm">
+              </video>
+                <div class="aboutUs-bg">
+                    <img src="./assets/img/img_about_space_bg.png" alt="">
+                </div>
+            </div>
+        </section>
+
+       
+        <!-- 我們團隊-->
+        <section class="page-section bg-primary text-white mb-0" id="advantage">
+            <div class=" ourTeam-container">
+                <div class="ourTeamInfo-wrap">
+                    <h1>我們團隊</h1>
+                    <div class="advantage-wrap">
+                       <div class="advantage-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="breathing">
+                                <path fill="#66e8d9" d="M64.5,168.2c-24.5-14.2-39.3-37.6-39.3-62.9c0-41.9,40.3-76.3,90.6-76.3c50.3,0,90.7,34.4,90.7,76.3s-40.3,76.3-90.7,76.3c-7.2,0-14.3-0.7-21.2-2.1l-3-0.6l-2.6,1.7l-28.2,18.2c2.7-1.7,7.4,0.8,7.4,4v-28v-4.3L64.5,168.2L64.5,168.2L64.5,168.2z M56.9,181.2l-3.8-6.5v28c0,8.8,8.5,13.4,15.9,8.7l28.1-18.2l-4.1-6.3l-1.5,7.4c7.9,1.6,16,2.4,24.2,2.4c58.2,0,105.8-40.6,105.8-91.4c0-50.8-47.6-91.4-105.8-91.4C57.6,13.9,10,54.5,10,105.3C10,136.3,27.9,164.4,56.9,181.2L56.9,181.2z M135.2,223.4c10.8,5,22.8,7.6,35.2,7.6c5.9,0,11.6-0.6,17.3-1.7l-1.5-7.4l-4.1,6.3l18.2,11.9c7.3,4.8,15.9,0.2,15.9-8.6v-18.2l-3.7,6.5c20.8-12.2,33.6-32.7,33.6-55.3c0-8.9-2-17.5-5.7-25.5c-1.8-3.8-6.3-5.4-10.1-3.6c-3.8,1.8-5.4,6.3-3.6,10c2.8,6,4.3,12.4,4.3,19c0,17-9.8,32.7-26.1,42.3L201,209v4.3v18.2c0-3.2,4.8-5.8,7.5-4l-18.2-11.9l-2.6-1.7l-3.1,0.6c-4.6,0.9-9.4,1.4-14.2,1.4c-10.2,0-20.1-2.2-28.8-6.2c-3.8-1.8-8.3-0.1-10,3.7C129.8,217.1,131.5,221.6,135.2,223.4L135.2,223.4z M83,117.1c5.6,0,10.1-4.5,10.1-10.1S88.6,97,83,97c-5.6,0-10.1,4.5-10.1,10.1C72.9,112.6,77.5,117.1,83,117.1L83,117.1z M118.3,117.1c5.6,0,10.1-4.5,10.1-10.1S123.8,97,118.3,97c-5.6,0-10.1,4.5-10.1,10.1S112.7,117.1,118.3,117.1L118.3,117.1z M153.6,117.1c5.6,0,10.1-4.5,10.1-10.1S159.1,97,153.6,97s-10.1,4.5-10.1,10.1C143.5,112.6,148,117.1,153.6,117.1L153.6,117.1z"/>
+                            </svg>
+                            <h4>溝通力</h4>
+                            <p>我們的專業團隊與客戶保持密切溝通，透過前期規劃與深入需求分析，確保每個細節都被妥善考量。我們專注於將客戶的想法與技術團隊無縫銜接，透過不斷優化與調整，確保最終成果符合期待，創造最大價值。</p>
+                       </div>
+                       <div class="advantage-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="#66e8d9">
+                                <path d="M50.6 132.2a9.1 9.1 0 1 0 18.2 0 9.1 9.1 0 1 0-18.2 0zM89.8 86.7a9.1 9.1 0 1 0 18.2 0 9.1 9.1 0 1 0-18.2 0zM143.7 117.2a9.1 9.1 0 1 0 18.2 0 9.1 9.1 0 1 0-18.2 0zM186.6 75a9.1 9.1 0 1 0 18.2 0 9.1 9.1 0 1 0-18.2 0z"/>
+                                 <path d="M195.7 63.2c-6.5 0-11.8 5.3-11.8 11.8a11.7 11.7 0 0 0 1.5 5.7l-25.9 25.9a10.5 10.5 0 0 0-.4.6 11.6 11.6 0 0 0-6.2-1.8 11.9 11.9 0 0 0-8.9 4l-33.5-20.2a11.4 11.4 0 0 0 .3-2.6c0-6.5-5.3-11.8-11.8-11.8s-11.8 5.3-11.8 11.8a11.9 11.9 0 0 0 2.7 7.5l-23.8 28a11.7 11.7 0 0 0-6.4-1.9c-6.5 0-11.8 5.3-11.8 11.8s5.3 11.8 11.8 11.8 11.8-5.3 11.8-11.8a11.7 11.7 0 0 0-1.7-6.1L94 97.6c.1-.1.1-.1.1-.1a11.4 11.4 0 0 0 4.9 1.1 11.9 11.9 0 0 0 9.2-4.5l33.3 20.1a11.9 11.9 0 0 0-.4 3.1c0 6.5 5.3 11.8 11.8 11.8s11.8-5.3 11.8-11.8a11.7 11.7 0 0 0-1.9-6.5c.2-.1.4-.3.6-.4L189 84.6a11.7 11.7 0 0 0 6.8 2.1c6.5 0 11.8-5.3 11.8-11.8s-5.3-11.7-11.9-11.7z"/>
+                                <path d="M59.7 138.7a6.5 6.5 0 1 1 6.5-6.5 6.5 6.5 0 0 1-6.5 6.5zM99 93.2a6.5 6.5 0 1 1 6.5-6.5 6.5 6.5 0 0 1-6.5 6.5zM152.8 123.8a6.5 6.5 0 1 1 6.5-6.5 6.5 6.5 0 0 1-6.5 6.5zM195.7 81.5a6.5 6.5 0 1 1 6.5-6.5 6.5 6.5 0 0 1-6.5 6.5z"/>
+                                <path d="M241.6 169.6h-10.7V30.8a4.3 4.3 0 0 0-4.3-4.3h-94.2V14.2a4.3 4.3 0 0 0-8.6 0v12.2h-95a4.3 4.3 0 0 0-4.3 4.3v138.8h-10a4.3 4.3 0 0 0-4.3 4.3v20.7a4.3 4.3 0 0 0 4.3 4.3h72.9l-31.8 39.8a4.3 4.3 0 0 0 .7 6.1 4.3 4.3 0 0 0 6.1-.7L98.3 199h59.2l36.2 45.3a4.3 4.3 0 0 0 6.1.7 4.3 4.3 0 0 0 .7-6.1L168.6 199h73a4.3 4.3 0 0 0 4.3-4.3v-20.7a4.3 4.3 0 0 0-4.3-4.4zM33 35.1h189.1v134.5H33V35.1zM237.3 190.3H18.7v-12h218.6v12z"/>
+                            </svg>
+                            <h4>規劃力</h4>
+                            <p>憑藉多年規劃經驗，我們在想法初期提供專業指引，協助具體化系統開發方向。透過循序漸進的計畫制定，精準落實每項需求，確保專案順利推進並達成最佳成效。</p>
+                        </div>
+                        <div class="advantage-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="#66e8d9">
+                                <path fill="#66e8d9" d="M72.3,10.4C63.7,12,56,20.2,54.6,29.2C52.6,42.8,65.9,56,79.6,53.8c11.7-1.9,20.5-13.7,18.7-24.8C96.2,16.7,84.2,8.1,72.3,10.4z M83,18.5c2.7,1.2,5.8,4.2,7.1,7c1.5,3.2,1.4,10-0.1,13.1c-1.4,2.9-3.9,5.4-6.8,6.8c-1.9,0.9-3,1.1-6.6,1.1c-5.2,0-7.6-0.9-10.6-3.9c-2.5-2.5-3.8-5.4-4.1-9.3c-0.5-7.3,3-13,9.4-15.3C74.2,16.9,80,17.2,83,18.5z"/><path fill="#66e8d9" d="M206.2,17.7c-2.3,0.6-6.1,2.9-7.6,4.5c-2.7,3-3.8,6-3.8,9.8c0,3,0.2,3.8,1.5,6.4c4.9,9.1,16,10.9,23.1,3.8c7.1-7.1,5.3-18.2-3.6-23C212.9,17.6,208.9,17,206.2,17.7z M213.8,25.8c2,1.5,3,3.7,2.7,6.8c-0.3,4.6-3,7-7.8,6.6c-4.6-0.3-7-3-6.6-7.8c0.2-3,1.2-4.8,3.6-6C207.7,24.3,212,24.5,213.8,25.8z"/><path fill="#66e8d9" d="M157.5,28.8c-5.2,1.2-10.3,5.6-12.9,10.9l-1.5,3.1L143,68.8l-0.1,26h-7.3h-7.4v3.7v3.7h7.4h7.4v29.5v29.5h-7.4h-7.4v3.7v3.7h7.4h7.3l0.1,26l0.1,26l1.7,3.5c2.1,4.3,5.2,7.3,9.5,9.3l3.1,1.5l14.9,0.1l14.9,0.1v-3.7v-3.7h-14c-16.1,0-17.1-0.1-20.1-3.5c-1-1.1-2-2.8-2.3-3.7c-0.3-1.2-0.5-10.5-0.5-26.8v-25h18.4h18.4v-3.7v-3.7h-18.4h-18.4v-29.5v-29.5h18.4h18.4v-3.7v-3.7h-18.4h-18.4v-25c0-16.8,0.2-25.6,0.5-26.8c0.7-2.4,4.2-6,6.6-6.6c1.2-0.3,7-0.5,15.8-0.5h13.9V32v-3.7l-13.9,0C165.5,28.4,158.5,28.6,157.5,28.8z"/><path fill="#66e8d9" d="M56.7,62c-3.5,0.6-8.3,2.7-11.8,5.2C39.8,70.9,36,76,33.7,82.4l-1.2,3.4l-0.1,34l-0.1,34h7.4h7.4v46.1V246h3.7h3.7v-49.8v-49.8h-7.4h-7.4v-29.2c0-31.3,0-31.5,2.4-36.6c1.3-2.9,6.4-8,9.3-9.3c4.8-2.3,6.3-2.4,25.2-2.4c19.6,0,20.8,0.1,25.9,2.9c3.2,1.7,6.8,5.4,8.4,8.6c2.6,5.1,2.6,5.2,2.6,36.8v29.2H106h-7.4v49.8V246h3.7h3.7v-46.1v-46.1h7.4h7.4l-0.1-34l-0.1-34l-1.2-3.4c-1.8-4.9-3.8-8.2-7.5-11.9c-3.7-3.7-7-5.8-11.9-7.5l-3.4-1.2l-18.7-0.1C67.6,61.6,58.1,61.8,56.7,62z"/><path fill="#66e8d9" d="M72.8,80v3.7h3.7h3.7V80v-3.7h-3.7h-3.7V80z"/><path fill="#66e8d9" d="M206.2,84.1c-2.3,0.6-6.1,2.9-7.6,4.5c-2.7,3-3.8,6-3.8,9.8c0,3,0.2,3.8,1.5,6.4c2.8,5.2,7.3,8.1,12.7,8.1c8.1,0.1,14.8-6.6,14.7-14.7c0-5.4-2.9-9.9-8-12.6C212.9,84,208.9,83.4,206.2,84.1z M213.8,92.2c2,1.5,3,3.7,2.7,6.8c-0.3,4.6-3,7-7.8,6.6c-4.6-0.3-7-3-6.6-7.8c0.2-3,1.2-4.8,3.6-6C207.7,90.7,212,90.9,213.8,92.2z"/><path fill="#66e8d9" d="M72.8,94.7v3.7h3.7h3.7v-3.7V91h-3.7h-3.7V94.7z"/><path fill="#66e8d9" d="M206.2,150.5c-2.3,0.6-6.1,2.9-7.6,4.5c-2.7,3-3.8,6-3.8,9.8c0,3,0.2,3.8,1.5,6.4c1.8,3.3,3.6,5.1,7.1,6.9c3.5,1.8,8.3,1.8,11.8,0c3.1-1.6,5.7-4.2,7.3-7.3c1.8-3.5,1.8-8.3,0-11.8c-1.8-3.4-3.6-5.3-6.7-7C212.9,150.4,208.9,149.8,206.2,150.5z M213.8,158.6c2,1.5,3,3.7,2.7,6.8c-0.3,4.6-3,7-7.8,6.6c-4.6-0.3-7-3-6.6-7.8c0.2-3,1.2-4.8,3.6-6C207.7,157.1,212,157.4,213.8,158.6z"/><path fill="#66e8d9" d="M72.8,203.6V246h3.7h3.7v-42.4v-42.4h-3.7h-3.7V203.6z"/><path fill="#66e8d9" d="M206.2,216.9c-2.3,0.6-6.1,2.9-7.6,4.5c-2.7,3-3.8,6-3.8,9.8c0,3,0.2,3.8,1.5,6.4c4.9,9.1,16,10.9,23.1,3.8c7.1-7.1,5.3-18.2-3.6-23C212.9,216.9,208.9,216.2,206.2,216.9z M213.8,225.1c2,1.5,3,3.7,2.7,6.8c-0.3,4.6-3,7-7.8,6.6c-4.6-0.3-7-3-6.6-7.8c0.2-3,1.2-4.8,3.6-6C207.7,223.5,212,223.8,213.8,225.1z"/>
+                            </svg>
+                            <h4>技術力</h4>
+                            <p>匯聚各領域專才，並擁有豐富的外部資源對接，確保你的想法順利落地。同時，我們樂於接納新技術，不斷探索與突破，讓每個專案都能達到更高層次的創新與價值。</p>
+                        </div>
+                        <div class="advantage-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="#66e8d9">
+                                <path fill="#66e8d9" d="M10.1,70.6l0.1,4.7l6,2.2c7.9,3,12.1,4.6,19,7.7c4.8,2.2,5.7,2.7,5.5,3.5c-0.3,1.2,0.9,1.7,1.7,0.6c0.4-0.5,0.8-0.6,1.2-0.3c0.6,0.4,0.6,0.6,0.1,1.2c-0.5,0.6-0.5,0.8,0.2,1c0.5,0.2,1,0,1.2-0.4c0.6-1.2,1.8-0.5,1.5,0.9c-0.3,1.2,0.6,1.5,1.5,0.6c0.7-0.7,1.5-0.1,1.2,1c-0.3,1.1,0.7,1.3,1.6,0.4c0.4-0.4,0.7-0.4,1.1,0c0.4,0.4-0.3,2.1-2.6,6.6c-1.7,3.3-3,6.1-2.9,6.3c0.3,0.3,14.8,8.4,15.3,8.6c0.3,0.1,0.2,1-0.3,2.4c-0.4,1.3-0.8,2.9-1,3.7l-0.3,1.5l4.5,1.5c9,3,14.7,6.3,14.3,8.5c-0.1,0.6-1.2,1.6-3.2,2.8c-5.3,3.2-7.3,5.7-7.3,9.1c0,3.5,3.2,7.9,7.1,10c3.2,1.7,8.3,1.8,11.2,0.2c2.3-1.2,4.4-3.7,5.2-6.1c0.9-3.2,0.6-5.1-1.5-7.3c-0.9-1-0.9-1.1-0.1-2.2c1-1.6,2.6-1.9,4.5-0.9c2.9,1.5,8.4,5.3,14.2,10c7.7,6.2,11.2,8.7,14.8,10.4c3.6,1.7,5.4,1.8,7.3,0.2c2.5-2.1,3-6,0.9-8.1c-1.2-1.2-0.9-2.7,0.8-4.9c1.3-1.7,4.2-3.3,5.8-3.3c2.3,0,4.7,1.1,6.6,2.9c2.3,2.1,3.2,4.5,2.8,6.9c-0.4,1.9-1.5,3.1-4.7,4.7c-2.9,1.5-4.3,3-4.7,5c-0.7,4.4,4.8,8.1,16.7,11.2l4.5,1.2l2.2-2.4c2.6-2.8,1.4-3,11.2,2.2c3.5,1.9,6.4,3.4,6.5,3.3c0.1-0.1,1.7-3.1,3.5-6.7c1.9-3.6,3.5-6.5,3.7-6.5c0.1,0,0.6,0.3,1.1,0.6c0.7,0.5,0.7,0.8,0.3,1.6c-0.7,1.3,0.6,1.8,1.5,0.6c0.8-1.2,2-0.5,1.3,0.8c-0.4,0.7-0.3,1,0.2,1.2c0.5,0.2,1,0,1.3-0.5c0.7-1,1.8-0.4,1.4,0.7c-0.4,1.1,0.7,1.8,1.2,0.8c0.6-1,1.8-0.5,1.5,0.6c-0.4,1.1,0.7,1.8,1.3,0.8c0.4-0.6,0.9-0.5,4.4,1.2c10.7,5.3,22.7,10.3,35,14.5c4.4,1.5,8.1,2.8,8.2,2.8c0.1,0,0.2-2,0.2-4.6v-4.5l-5.6-2c-9.4-3.2-22.8-8.7-30.4-12.3c-6.3-3-7.2-3.6-6.8-4.3c0.6-1.1-0.9-1.8-1.5-0.7c-0.6,1-1.8,0.4-1.5-0.6c0.4-1.1-0.7-1.8-1.2-0.8c-0.6,1-1.8,0.5-1.5-0.6c0.3-1.1-0.5-1.6-1.4-0.9c-0.8,0.6-1.7,0.2-1.3-0.6c0.3-0.9-0.6-1.4-1.4-0.7c-0.5,0.4-0.8,0.4-1.5,0c-0.9-0.6-0.7-0.9,2.5-7.1l3.4-6.5l-2-1.1c-6.5-3.5-12.8-7.2-12.8-7.4c0-0.1,1.6-4.1,3.5-8.8c1.9-4.7,3.4-8.6,3.3-8.7c-0.1,0-2.4-0.8-5.2-1.5c-8.4-2.4-14.1-5.5-14.1-7.8c0-0.8,0.7-1.3,3.4-2.5c5.2-2.4,7.2-5,7.2-9.6c0-2.8-1.6-6.4-3.8-8.5c-3-2.9-4.6-3.6-8.7-3.6c-5.2,0-9.1,2.3-10.8,6.3c-1.1,2.5-0.9,5,0.5,7c0.6,0.9,1.2,2.1,1.2,2.5c0,1.1-1.7,2.8-2.7,2.8c-2.4,0-10.1-4.9-17.4-11.1c-7.8-6.6-14.2-10.6-17-10.6c-2.7,0-4.9,2.1-4.9,4.7c0,0.6,0.4,1.7,0.9,2.5c0.5,0.8,0.9,1.9,0.9,2.4c0,2.7-3.4,6.9-6.4,7.8c-4.4,1.4-10.4-1.6-12.3-6.1c-1.8-4.2-0.5-6.8,4.4-9.2c4-1.9,5-2.9,5.3-5.1c0.4-2.2-1.6-4.3-6.2-6.7c-2.7-1.4-12.3-5.2-13.2-5.2c0,0-2.4,3.4-5.3,7.7c-2.8,4.2-5.3,7.6-5.4,7.5c-0.2-0.1-2.9-1.5-6.1-3.2c-3.2-1.7-6.6-3.5-7.6-3.8c-2.2-0.9-1.9-1.2-6.5,6.6c-2.1,3.5-3.3,5.1-3.7,4.9c-0.3-0.1-0.7-0.2-0.8-0.2c-0.1,0-0.1-0.5,0.1-1.2c0.2-0.9,0.1-1.2-0.5-1.2c-0.4,0-0.9,0.3-1,0.7c-0.4,1.1-1.5,0-1.2-1.2c0.3-1-0.7-1.3-1.6-0.4c-0.7,0.7-1.6,0.1-1.2-0.8c0.4-1.1-0.8-1.7-1.5-0.8c-0.7,0.9-1.8,0.3-1.4-0.7c0.4-1-0.7-1.6-1.4-0.7c-0.4,0.6-1.4,0.2-6.7-2.2c-8.2-3.7-17-7.3-23.6-9.6L10,66L10.1,70.6z M101.9,73.6c7,3.4,7.4,4.8,2,7.3c-5.4,2.6-7.3,5.4-6.6,10.3c0.7,5.4,6.1,10,12.3,10.6c4.5,0.4,9-2.3,11.2-6.9c1.5-3,1.5-5,0.2-7.4c-1.2-2-0.8-3.2,0.9-3.5s7.2,2.9,12.7,7.4c2,1.7,2.2,1.9,1.6,2.8c-1.8,2.7-9,15.3-11,19.2c-2,3.7-2.3,4.7-2.1,6.4c0.2,2.2,1.8,4.2,3.2,4.2c1.1,0,3.2-1.1,4-2c1.4-1.8,4.4-0.2,6.1,3.1c1.2,2.4,1,5.7-0.6,8.9c-2.5,4.9-6.8,7-10.5,5c-1-0.5-1.5-1.4-2.3-3.7c-1.1-3.3-2.6-4.8-4.6-4.8c-2.6,0-5.5,4.2-7.8,11.2c-0.9,2.9-1.1,3.1-1.8,2.5c-10-7.3-13.7-9.6-15.8-9.6c-2.4,0-5.9,3.5-5.9,5.9c0,0.6,0.6,1.8,1.4,2.6c0.8,0.9,1.4,2,1.4,2.6c0,2.9-3.3,6.7-6.2,7.2c-5.3,1-11.4-3-12-8c-0.3-2.4,1-4.3,4.2-6.2c5.6-3.3,7.1-5.6,5.5-8.7c-1.3-2.5-6.8-5.7-14-8.1c-4.4-1.4-4.3-0.9-1.9-7.2c2.8-7.2,4.6-8.4,6.2-4.1c1.2,3.5,2.4,5,4.1,5.8c3.3,1.3,6.8,0.5,9.9-2.4c5.7-5.3,6.6-14.6,1.8-19.7c-1.7-1.8-1.9-1.9-4.3-1.9c-2.3,0-2.7,0.2-4.1,1.6l-1.6,1.6l-0.3-1.2c-0.2-0.9,0.1-1.9,1.2-3.9c1.6-2.8,9.9-15.6,12.4-18.9l1.4-1.9l3.3,1.1C97.1,71.4,100.1,72.7,101.9,73.6z M187.7,141.3c3.3,1.8,5.9,3.6,5.9,3.9c-0.1,0.3-14.7,28-15.1,28.5c0,0.1-11.9-6.3-12.2-6.5c-0.1,0,0.6-1.5,1.5-3.2c1.8-3.2,2-4.7,1.1-6.4c-1.2-2.4-3.6-2.8-6.5-1.2c-2.1,1.2-3.4,1.2-5.3,0c-2.1-1.3-3.1-3.4-2.8-6c0.7-5.9,6.1-11.5,11.2-11.5c2.3,0,3.3,1.2,3.6,4.2c0.3,2.8,1.8,4.6,3.9,4.6c1.6,0,5-3.5,6.8-7c0.8-1.5,1.5-2.7,1.6-2.7C181.6,137.9,184.4,139.5,187.7,141.3z"/>
+                            </svg>
+                            <h4>整合力</h4>
+                            <p>我們致力於連結需求與供給，透過與客戶的深度交流，激發創新思維，打造技術與想法的橋樑。專業顧問全程協助，確保各方理念有效整合，將你的願景轉化為可實現的成果。</p>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer-->
+        <footer class="footer text-center">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Location-->
+                    <div class="d-flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="#66e8d9">
+                            <path fill="#66e8d9" d="M119.5,10.4c-18.6,2.1-35.7,10.3-48.7,23.3C61.3,43.3,54.8,54,50.8,66.3c-3,9.4-3.6,13.2-3.6,24c0,9,0.1,10.1,2,17.2c5.6,21.8,18.3,49.3,38.3,82.9c16.3,27.5,36.9,55.6,40.5,55.6c3.6,0,24.2-28.3,40.4-55.5c20.1-33.7,33.1-61.9,38.5-83.3c1.7-6.7,1.9-8,1.9-16.9c0-10.5-0.7-15-3.8-24.8c-7.5-23.6-27.2-43.2-51.4-51.3C143.2,10.7,129.9,9.2,119.5,10.4z M135.3,55.6c9,1.9,17.3,7.5,22.3,15c4.1,6.2,5.4,10.4,5.8,18.2c0.2,4.8,0.1,7.4-0.6,10.2c-2.5,10.1-9.4,18.8-18.4,23.3c-11.1,5.4-21.6,5.4-32.7,0c-9-4.5-15.9-13.2-18.4-23.3c-1.3-5.2-0.9-15.2,0.9-20.4C100.1,62.1,118,52,135.3,55.6z"/>
+                        </svg>
+                        <p class="lead mb-0">
+                            桃園市桃園區同安里藝文一街８６之６號十七樓
+                        </p>
+                    </div>
+                    
+                </div>
+            </div>
+        </footer>
+        <!-- Copyright Section-->
+        <div class="copyright py-4 text-center text-white">
+            <div class="container"><small>Copyright &copy; 順大資訊股份有限公司</small></div>
+        </div>
+
+
+        <!-- Bootstrap core JS-->
+        <script src="//cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="./assets/js/scripts.js"></script>
+        
+    </body>
+</html>
