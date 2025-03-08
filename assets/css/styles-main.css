@@ -526,6 +526,13 @@
   .aboutUs-container{
     padding: 1rem;
   }
+  .aboutUs-container .aboutUs-box  {
+    padding: 14px;
+    margin-bottom: 20px;
+  }
+  .aboutUs-container .aboutUs-box p {
+    margin-bottom: 0px;
+  }
   .ourTeam-container img {
     width: 80%;
   }
