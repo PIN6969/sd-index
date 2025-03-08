@@ -27,8 +27,10 @@
       <!-- <script src="//unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
       <script>var vConsole = new window.VConsole();</script> -->
       <script src="//code.jquery.com/jquery-3.7.1.js"></script>
-	  <script src="//unpkg.com/vue@3/dist/vue.global.js"></script>
-	  <script>
+
+            <!-- 多国语言包载入 -->
+	  <!-- <script src="//unpkg.com/vue@3/dist/vue.global.js"></script> -->
+	  <!-- <script>
 			//多国语言包载入(vue.js)
 			$(function(){
 				let lang = "cht"; //預設語言
@@ -71,38 +73,7 @@
 					}
 				});
 			})
-		</script>
-       <script>
-        const video = document.getElementById('videoElement');
-        
-        let isReversing = false; // 控制是否處於倒播狀態
-      
-        // 正常播放結束後
-        video.addEventListener('ended', function() {
-          if (!isReversing) {
-            // 設定為倒播狀態
-            isReversing = true;
-            video.pause();
-            video.currentTime = video.duration; // 將播放時間設為影片結尾
-            reversePlayback();
-          }
-        });
-      
-        // 反向播放的功能
-        function reversePlayback() {
-          const interval = setInterval(function() {
-            if (video.currentTime <= 0) {
-              // 如果倒播到影片開頭，重新設置為正常播放並循環
-              clearInterval(interval);
-              video.playbackRate = 1; // 恢復為正常速度
-              video.play();
-              isReversing = false; // 停止倒播狀態
-            } else {
-              video.currentTime -= 0.05; // 每次倒退一點點
-            }
-          }, 20); // 每20毫秒更新一次時間
-        }
-      </script>
+		</script> -->
     </head>
     <body id="page-top" style="background-color: #00040f;">
         <!-- HEADER-->
@@ -117,11 +88,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#service">{{LANG.service}}</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#aboutUs">{{LANG.about_us}}</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#advantage">{{LANG.advantage}}</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#service">服務</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#aboutUs">關於我們</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#advantage">團隊</a></li>
                     </ul>
-                    <div class="dropdown language-dropdown">
+                    <!-- <div class="dropdown language-dropdown">
                         <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             <svg xmlns="//www.w3.org/2000/svg" width="25" height="25" fill="#fff" class="bi bi-globe" viewBox="0 0 16 16">
                                 <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
@@ -132,7 +103,7 @@
                           <li><a class="dropdown-item" href="?lang=cht">繁中</a></li>
                           <li><a class="dropdown-item" href="?lang=eng">ENGLISH</a></li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </nav>
@@ -155,13 +126,13 @@
          <!-- 我們的服務 -->
          <section class="page-section bg-primary text-white mb-0" id="service">
             <div class="serviceTeam-wrap ">
-                <h1 class="page-section-heading text-center text-uppercase text-white">{{LANG.our_service}}</h1>
+                <h1 class="page-section-heading text-center text-uppercase text-white">我們的服務</h1>
                 <div class="serviceItem-wrap ">
                     <div class="service-box">
                         <div class="img-container">
                           <h3>遊戲設計</h3>
                           <img src="./assets/img/img_service_gamedesign.png" alt="">
-                          <p>{{LANG.html5_engine_fair_design}}</p>
+                          <p>我們的遊戲設計以HTML5引擎為基礎，提供穩定可靠的遊戲運行環境，並精心設計公平的機制和合理的獲利率。高倍賠率設計增添刺激感，讓玩家在享受挑戰的同時，獲得無與倫比的遊戲體驗。</p>
                         </div>
                     </div>
                     <div class="service-box">
@@ -194,16 +165,16 @@
         <section id="aboutUs">
             <div class=" aboutUs-container w-100">
                <div class="container-wrap">
-                 <div class="aboutUs-box ">
-                      <h1>關於順大</h1>
-                      <p >當今的世界充滿挑戰，而我們的專注不僅在於技術本身，更在於如何將各種要素巧妙融合。相較於一味的順從，我們更崇尚在過程中選擇對的方向，並堅持以最合適的方式應對每一個挑戰，這正是我們的核心價值——在細節中尋找美好，並從中汲取力量。
-                      </p>
-                 </div>
-                 <div class="aboutUs-box second-content-box">
-                     <h1>{{LANG.vision_future_goal}}</h1>
-                     <p >當問題像洪水般湧向你時，你不需要的是冷冰冰的報價，而是能夠與你一同面對困難，並且幫助你走出困境的夥伴。這就是我們的使命：為您提供的不僅是解決方案，更是一個有智慧的思考過程，讓每一個挑戰都成為成長的契機。每一次的合作，我們都會把您放在首位，並全力以赴，直到問題被徹底征服。<br>我們的團隊從不僅僅停留在表面的技術需求，我們深知細節決定結果，效率決定未來。通過密切的合作和深入的理解，我們為您提供的不僅是技術上的支持，更是能夠推動您業務發展的核心動力。與我們合作，不僅能夠解決眼前的問題，更將幫助您在未來的競爭中拉開與他人的差距。
-                     </p>
-                  </div>
+                    <div class="aboutUs-box ">
+                        <h1>關於順大</h1>
+                        <p >當今的世界充滿挑戰，而我們的專注不僅在於技術本身，更在於如何將各種要素巧妙融合。相較於一味的順從，我們更崇尚在過程中選擇對的方向，並堅持以最合適的方式應對每一個挑戰，這正是我們的核心價值——在細節中尋找美好，並從中汲取力量。
+                        </p>
+                    </div>
+                    <div class="aboutUs-box second-content-box">
+                        <h1>發展願景</h1>
+                        <p >當問題像洪水般湧向你時，你不需要的是冷冰冰的報價，而是能夠與你一同面對困難，並且幫助你走出困境的夥伴。這就是我們的使命：為您提供的不僅是解決方案，更是一個有智慧的思考過程，讓每一個挑戰都成為成長的契機。每一次的合作，我們都會把您放在首位，並全力以赴，直到問題被徹底征服。<br>我們的團隊從不僅僅停留在表面的技術需求，我們深知細節決定結果，效率決定未來。通過密切的合作和深入的理解，我們為您提供的不僅是技術上的支持，更是能夠推動您業務發展的核心動力。與我們合作，不僅能夠解決眼前的問題，更將幫助您在未來的競爭中拉開與他人的差距。
+                         </p>
+                    </div>
                </div>
                <video id="videoElement" autoplay loop muted playsinline class="vid-item">
                 <source src="./assets/img/vid_about_spacerobot.webm" type="video/webm">
