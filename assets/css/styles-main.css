@@ -24,12 +24,19 @@
 
 .banner-wrap {
   z-index: 1;
-}
-
-.banner-wrap .banner-1 {
   position: relative;
 }
+.banner-wrap  .floating-img {
+  position: absolute;
+  top: 20%;
+  left: 18%;
+  max-width: 100%;
+  animation: floating 4s ease-in-out infinite;
+}
 
+.banner-wrap .animate__animated {
+  --animate-duration: 2s;
+}
 .banner-title{
   position: absolute;
   right: 30%;
@@ -58,175 +65,12 @@
   transition: all 0.3s ease;
   z-index: 3;
 }
-.banner-wrap .banner-1 .floating-img {
-  position: absolute;
-  top: 20%;
-  left: 18%;
-  max-width: 100%;
-  animation: floating 4s ease-in-out infinite;
-}
 
-.banner-wrap .banner-txt h1 {
-  border-bottom: 3px solid #0d0a4b;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-}
-
-.banner-wrap .jump-in-img {
-  position: absolute;
-  top: 0;
-  z-index: 2;
-}
-
-.banner-wrap .animate__animated {
-  --animate-duration: 2s;
-}
-
-/* 熱門遊戲區 */
-.hotGame-wrap {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.hotGame-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hotGame-title .fa-fire {
-  max-width: 30px;
-  height: 100%;
-  margin-right: 10px;
-  color: #f93928;
-}
-
-.game-search {
-  width: 50%;
-  position: relative;
-  margin: 2rem auto;
-}
-
-.game-search .search-blanck {
-  width: 100%;
-  height: 40px;
-  border: 1px solid #2864a3;
-  border-radius: 10px;
-  padding: 5px 40px;
-}
-
-.game-search .search-blanck:focus {
-  outline: none;
-  box-shadow: inset 0 0 8px rgba(40, 100, 163, 0.3);
-}
-
-.game-search svg {
-  position: absolute;
-  left: 10px;
-  top: 25%;
-}
-
-.seeMore-btn {
-  margin-bottom: 20px;
-}
-
-.seeMore-btn a {
-  text-decoration: none;
-  color: #2864A3;
-  font-size: 1.2rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-}
-
-.seeMore-btn a:hover {
-  color: #397fc9;
-}
-
-.game-list-wrap {
-  display: flex;
-  justify-content: start;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-.game-list-wrap a {
-  display: block;
-  width: 100%;
-}
-
-.game-container {
-  max-width: 250px;
-  border-radius: 10px;
-  padding: 0;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  width: calc(33.333% - 30px);
-}
-
-.game-container .game-name {
-  background: #2864A3;
-  font-size: 1rem;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.game-container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0);
-  transition: background 0.3s ease;
-  z-index: 1;
-}
-
-/* hover 時顯示黑霧 */
-.game-container:hover::before {
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.game-icon-svg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  visibility: hidden;
-  z-index: 3;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.game-container:hover .game-icon-svg {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* 維護中 */
-.maintenance-txt {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  font-size: 1.5rem;
-  font-weight: 600;
-  z-index: 10;
-  text-align: center;
-}
 
 /* 關於我們 */
+.ssBtnDefault{
+  display: none !important;
+}
 .aboutUs-container {
   position: relative;
   background-repeat: no-repeat;
@@ -461,7 +305,7 @@
   border-radius: 50%;
 }
 .advantage-box:hover{
-  background: linear-gradient(to top,#66e8d9 3%,#0e1320 50%);
+  background: linear-gradient(to top, rgba(102, 232, 217, 0.5) 3%,#0e1320 50%);
   border:2px solid #66e8d9;
 }
 .advantage-box:hover svg{
@@ -469,20 +313,36 @@
 }
 @keyframes breathing {
   0% { transform: scale(1); }
-  50% { transform: scale(1.2); } /* 放大到 1.1 倍 */
+  50% { transform: scale(1.2); } 
   100% { transform: scale(1); }
 }
 
 
 @media screen and (max-width: 1200px) {
-  .banner-wrap {
-    margin-top: 100px;
+  .banner-wrap{
+    margin-top: 10px;
+  }
+  .banner-title{
+    right: 10%;
+    top: 30%;
+  }
+  .banner-title h1 {
+    font-size: 4rem;
+  }
+  .second-title{
+    top: 45%;
+    right: 5%;
   }
   .banner-wrap .banner-txt {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    right: 10%;
+    top: 65%;
+    max-width: 40%;
   }
-  .banner-wrap .banner-txt h1 {
-    font-size: 1.5rem;
+  .banner-wrap  .floating-img {
+    top: 10%;
+    left: 18%;
+    max-width: 350px;
   }
   .aboutUs-container {
     flex-direction: column;
@@ -490,6 +350,9 @@
   }
   .aboutUs-container .container-wrap {
     max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    
   }
   .aboutUs-container .aboutUs-box {
     width: 100%;
@@ -497,11 +360,15 @@
   .aboutUs-container .aboutUs-box h1 {
     width: 100%;
   }
- 
-  .aboutUs-container .main-img {
-    position: relative;
-    width: 80%;
+  .second-content-box{
+    max-width: 60%;
+    margin: 0  !important;
   }
+  .vid-item{
+    right: -10%;
+    width: 480px;
+  }
+  
   .serviceItem-wrap {
     flex-wrap: wrap;
     flex: 1 1 calc(50% - 20px);
@@ -513,23 +380,34 @@
   .serviceItem-wrap .service-box h3 {
     font-size: 1.2rem;
   }
-  .game-list-wrap {
-    flex: 1 1 calc(33.333% - 1rem);
-    margin: 0.5rem;
-    box-sizing: border-box;
-  }
-  .game-container {
-    flex: 0 0 calc(33.333% - 30px);
-    min-width: calc(33.333% - 10px);
-  }
-  .game-name {
-    white-space: nowrap;
-  }
   .secureMain-img {
     width: 60%;
     height: 60%;
   }
   
+}
+@media screen and (max-width: 1024px) {
+  .banner-wrap {
+    margin-top: 100px;
+    
+  }
+  .banner-title{
+    /* right: 10%; */
+    top: 20%;
+  }
+  .banner-title h1 {
+    font-size: 4rem;
+  }
+  .second-title{
+    top: 38%;
+    /* right: 5%; */
+  }
+  
+  .banner-wrap  .floating-img {
+    top: 8%;
+    left: 15%;
+    max-width: 300px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -537,26 +415,30 @@
     width: 60%;
   }
   .banner-wrap {
-    margin-top: 75px;
+    margin-top: 100px;
+    
+  }
+  .banner-title{
+    /* right: 10%; */
+    top: 20%;
+  }
+  .banner-title h1 {
+    font-size: 3rem;
+  }
+  .second-title{
+    top: 38%;
+    /* right: 5%; */
+  }
+  
+  .banner-wrap  .floating-img {
+    top: 5%;
+    left: 15%;
+    max-width: 250px;
   }
   .banner-wrap .banner-txt {
-    top: 30%;
-  }
-  .banner-wrap img {
-    overflow: hidden;
-  }
-  .game-container .game-name {
-    padding: 20px 5px;
-    font-size: 0.75rem;
-  }
-  .maintenance-txt {
-    font-size: 1.2rem;
-  }
-  .carousel-item .banner-txt {
-    top: 20%;
-    left: 40%;
-    font-size: 0.8rem;
-    width: 50%;
+    left:50%;
+    top: 60%;
+    max-width: 50%;
   }
   .ourTeam-container {
     flex-direction: column;
@@ -566,6 +448,12 @@
     width: 100%;
     margin-top: 20px;
     align-items: center;
+  }
+  .second-content-box{
+    max-width: 100%;
+  }
+  .vid-item{
+    display: none;
   }
   .serviceTeam-wrap {
     max-width: 100%;
@@ -585,31 +473,36 @@
 
 @media screen and (max-width: 576px) {
   
-  .seeMore-btn a {
-    font-size: 1rem;
-  }
-  .carousel-inner {
-    overflow: hidden;
-    position: relative;
-  }
-  .banner-wrap img {
+  .banner-wrap .main-banner {
     height: 450px;
     object-fit: cover;
     object-position: left;
   }
-  .game-list-wrap {
-    margin: 0;
-    justify-content: start;
-    gap: 10px;
+  
+  .banner-title{
+    right: 75%;
+    top: 5%;
+    display: flex;
+    flex-direction: column;
   }
-  .game-container .game-name {
-    height: 60px;
-    padding: 10px;
+  .banner-title h1 {
+    font-size: 2rem;
+    writing-mode: vertical-rl; /* 直書，從右到左 */
+    text-orientation: upright;
   }
-  .game-container .game-name span {
-    white-space: normal;
-    text-overflow: ellipsis;
-    display: inline-block;
+  .second-title{
+    top:15%;
+    right: 62%;
+  }
+  
+  .banner-wrap  .floating-img {
+    top: 20%;
+    left:35%;
+    width: 280px;
+  }
+  
+  .banner-wrap .banner-txt {
+    display: none;
   }
   .serviceTeam-wrap {
     max-width: 100%;
@@ -630,44 +523,23 @@
   .serviceTeam-wrap .serviceItem-wrap .service-box:hover h3 {
     display: none;
   }
-  .carousel-item .banner-txt {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-align: center;
-    z-index: 2;
-    width: 70%;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  .carousel-item .banner-txt h1 {
-    border-bottom: 3px solid #fff;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-  }
-  .carousel-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+  .aboutUs-container{
+    padding: 1rem;
   }
   .ourTeam-container img {
     width: 80%;
   }
-  .ourTeam-container .ourTeamInfo-wrap {
+  
+  .advantage-wrap{
     display: flex;
     flex-direction: column;
-    width: 100%;
   }
-  .ourTeam-container .promiseSection-wrap {
-    flex-direction: column;
+  .footer svg{
+    width: 25px;
   }
- 
+  .footer p{
+    font-size: 0.8rem;
+  }
  
   .logo-box img {
     max-width: 230px !important;
