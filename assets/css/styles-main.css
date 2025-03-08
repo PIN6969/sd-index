@@ -525,6 +525,7 @@
   }
   .aboutUs-container{
     padding: 1rem;
+    margin-bottom: 3rem;
   }
   .aboutUs-container .aboutUs-box  {
     padding: 14px;
@@ -535,6 +536,9 @@
   }
   .ourTeam-container img {
     width: 80%;
+  }
+  .ourTeam-section{
+    padding-top: 0rem;
   }
   
   .advantage-wrap{
